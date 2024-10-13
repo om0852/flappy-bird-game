@@ -1,14 +1,16 @@
-"use client"
+"use client";
 import Image from "next/image";
-import background from "./images/background-day.png"
+import background from "./images/background-day.png";
 import styled from "styled-components";
 const WALL_HEIGHT = 600;
 const WALL_WIDTH = 400;
+const BIRD_WIDTH = 30;
+const BIRD_HEIGHT = 28;
 export default function Home() {
   return (
     <HomeContainer>
       <Background height={WALL_HEIGHT} width={WALL_WIDTH}>
-        <Bird />
+        <Bird top={300} left={100} width={BIRD_WIDTH} height={BIRD_HEIGHT} />
       </Background>
     </HomeContainer>
   );
@@ -30,4 +32,12 @@ const Background = styled.div`
   border: 2px solid black;
 `;
 
-const Bird = styled.div``;
+const Bird = styled.div`
+  background-image: url("/images/yellowbird-upflap.png");
+  background-size: ${(props) => props.width}px ${(props) => props.height}px;
+  height: ${(props) => props.height}px;
+  width: ${(props) => props.width}px;
+  top: ${(props) => props.top}px;
+  position: relative;
+  left: ${(props) => props.left}px;
+`;
