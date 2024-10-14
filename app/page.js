@@ -24,7 +24,16 @@ export default function Home() {
     }
     return () => clearInterval(birdInterval);
   });
+useEffect(()=>{
+let topObj = birdPos >= 0 && birdPos <objHeight;
+let botObj = birdPos <=WALL_HEIGHT && birdPos>=WALL_HEIGHT-BOTTOM_OBJ + BIRD_HEIGHT
 
+if(objPos>=OBJ_WIDTH && objPos<=OBJ_WIDTH+10 && (topObj || botObj)){
+  setIsStart(false);
+  setBirdPos(300);
+
+}
+},)
   useEffect(() => {
     let objVal;
     if (isStart && objPos >= -OBJ_WIDTH) {
@@ -33,9 +42,10 @@ export default function Home() {
       }, 24);
     } else {
       setObjPos(WALL_WIDTH);
+      setObjHeight(Math.floor(Math.random()*WALL_HEIGHT-OBJ_GAP))
     }
     return () => clearInterval(objVal);
-  });
+  },[isStart,objPos]);
   const handler = () => {
     if (!isStart) setIsStart(true);
     else if (BIRD_HEIGHT > birdPos) {
@@ -58,10 +68,10 @@ export default function Home() {
         />
         <Obj
           deg={0}
-          height={objHeight}
+          height={BOTTOM_OBJ}
           width={OBJ_WIDTH}
           left={objPos}
-          top={BOTTOM_OBJ - 30}
+          top={WALL_HEIGHT-(objHeight+BOTTOM_OBJ) - 30}
         />
       </Background>
     </HomeContainer>
