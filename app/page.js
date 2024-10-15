@@ -58,7 +58,7 @@ if(objPos>=OBJ_WIDTH && objPos<=OBJ_WIDTH+10 && (topObj || botObj)){
     <HomeContainer onClick={handler}>
       <Background height={WALL_HEIGHT} width={WALL_WIDTH}>
         <Bird top={birdPos} left={30} width={BIRD_WIDTH} height={BIRD_HEIGHT} />
-        {!isStart && <StartGame>Click to start</StartGame>}{" "}
+        {!isStart && <StartGame>Click to start</StartGame>}
         <Obj
           deg={180}
           height={objHeight}
