@@ -19,8 +19,9 @@ export default function Home() {
   useEffect(() => {
     if (isStart && birdPos < WALL_HEIGHT - BIRD_HEIGHT) {
       birdInterval = setInterval(() => {
+        console.log("call")
         setBirdPos((prev) => prev + GRAVITY);
-      }, 30);
+      }, 23);
     }
     return () => clearInterval(birdInterval);
   });
@@ -51,12 +52,12 @@ if(objPos>=OBJ_WIDTH && objPos<=OBJ_WIDTH+10 && (topObj || botObj)){
     else if (BIRD_HEIGHT > birdPos) {
       setBirdPos(10);
     } else {
-      setBirdPos((prev) => prev - 50);
+      setBirdPos((prev) => prev - 70);
     }
   };
   return (
     <HomeContainer onClick={handler}>
-      <Background height={WALL_HEIGHT} width={WALL_WIDTH}>
+      <Background className="overflow-hidden" height={WALL_HEIGHT} width={WALL_WIDTH}>
         <Bird top={birdPos} left={30} width={BIRD_WIDTH} height={BIRD_HEIGHT} />
         {!isStart && <StartGame>Click to start</StartGame>}
         <Obj
