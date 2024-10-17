@@ -40,7 +40,7 @@ if(objPos>=OBJ_WIDTH && objPos<=OBJ_WIDTH+10 && (topObj || botObj)){
     if (isStart && objPos >= -OBJ_WIDTH) {
       objVal = setInterval(() => {
         setObjPos((prev) => prev - OBJ_SPEED);
-      }, 24);
+      }, 22);
     } else {
       setObjPos(WALL_WIDTH);
       setObjHeight(Math.floor(Math.random()*WALL_HEIGHT-OBJ_GAP))
@@ -52,7 +52,7 @@ if(objPos>=OBJ_WIDTH && objPos<=OBJ_WIDTH+10 && (topObj || botObj)){
     else if (BIRD_HEIGHT > birdPos) {
       setBirdPos(10);
     } else {
-      setBirdPos((prev) => prev - 70);
+      setBirdPos((prev) => prev - 80);
     }
   };
   return (
